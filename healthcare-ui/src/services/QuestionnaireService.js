@@ -1,41 +1,34 @@
-import http from "../http-common";
+import api from "../http-common";
 
-const getAll = () => {
-  return http.get("/tutorials");
+export const submit = async (data) => {
+  const res = await api.post("/submit", data);
+  return res.data;
 };
 
-const get = (id) => {
-  return http.get(`/tutorials/${id}`);
-};
+// const getAll = () => {
+//   return http.get("/tutorials");
+// };
 
-const create = (data) => {
-  return http.post("/tutorials", data);
-};
+// const get = (id) => {
+//   return http.get(`/tutorials/${id}`);
+// };
 
-const update = (id, data) => {
-  return http.put(`/tutorials/${id}`, data);
-};
+// const create = (data) => {
+//   return http.post("/tutorials", data);
+// };
 
-const remove = (id) => {
-  return http.delete(`/tutorials/${id}`);
-};
+// const update = (id, data) => {
+//   return http.put(`/tutorials/${id}`, data);
+// };
 
-const removeAll = () => {
-  return http.delete(`/tutorials`);
-};
+// const remove = (id) => {
+//   return http.delete(`/tutorials/${id}`);
+// };
 
-const findByTitle = (title) => {
-  return http.get(`/tutorials?title=${title}`);
-};
+// const removeAll = () => {
+//   return http.delete(`/tutorials`);
+// };
 
-const QuestionnaireService = {
-  getAll,
-  get,
-  create,
-  update,
-  remove,
-  removeAll,
-  findByTitle,
-};
-
-export default QuestionnaireService;
+// const findByTitle = (title) => {
+//   return http.get(`/tutorials?title=${title}`);
+// };
