@@ -1,1 +1,2 @@
 export const SUBMIT_ANSWER = "SUBMIT_ANSWER";
+export const SAVE_USER_INFO = "SAVE_USER_INFO";

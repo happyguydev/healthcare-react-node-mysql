@@ -1,10 +1,20 @@
-import { submit } from "../services/QuestionnaireService";
-import { SUBMIT_ANSWER } from "./types";
+import { submit, saveUser } from "../services/QuestionnaireService";
+import { SUBMIT_ANSWER, SAVE_USER_INFO } from "./types";
 
-export const submitAnswer = (data) => async (dispatch) => {
+export const SubmitAnswer = (data) => async (dispatch) => {
   return submit(data).then((res) => {
     dispatch({
       type: SUBMIT_ANSWER,
+      payload: res,
+    });
+    return res;
+  });
+};
+
+export const SaveUserInfo = (data) => async (dispatch) => {
+  return saveUser(data).then((res) => {
+    dispatch({
+      type: SAVE_USER_INFO,
       payload: res,
     });
     return res;

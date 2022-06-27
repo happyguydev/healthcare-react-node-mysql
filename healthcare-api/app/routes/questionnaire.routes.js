@@ -8,6 +8,8 @@ module.exports = (app) => {
 
   router.post("/submit", questionnaire.submit);
 
+  router.post("/save-user", questionnaire.saveUser);
+
   // Retrieve all Tutorials
   // router.get("/", tutorials.findAll);
 

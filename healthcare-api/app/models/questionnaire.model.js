@@ -44,54 +44,14 @@ module.exports = (sequelize, Sequelize) => {
           key: "rid",
         },
       },
-    },
-    {
-      freezeTableName: true,
-      timestamps: false,
-    }
-  );
-
-  const HistoryLog = sequelize.define(
-    "history_log",
-    {
-      hid: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-      },
-      first: {
-        type: Sequelize.INTEGER,
-      },
-      second: {
-        type: Sequelize.INTEGER,
-      },
-      third: {
-        type: Sequelize.INTEGER,
-      },
-      fourth: {
-        type: Sequelize.INTEGER,
-      },
-      fifth: {
-        type: Sequelize.INTEGER,
-      },
-      uid: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: Users,
-          key: "uid",
-        },
-      },
       createdAt: {
-        type: "TIMESTAMP",
-        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
         allowNull: false,
       },
       updatedAt: {
-        type: "TIMESTAMP",
-        defaultValue: sequelize.literal(
-          "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"
-        ),
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
         allowNull: false,
       },
     },
@@ -101,5 +61,5 @@ module.exports = (sequelize, Sequelize) => {
     }
   );
 
-  return { UserRole, Users, HistoryLog };
+  return { UserRole, Users };
 };

@@ -5,6 +5,11 @@ export const submit = async (data) => {
   return res.data;
 };
 
+export const saveUser = async (data) => {
+  const res = await api.post("/save-user", data);
+  return res.data;
+};
+
 // const getAll = () => {
 //   return http.get("/tutorials");
 // };

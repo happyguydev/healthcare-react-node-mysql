@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const QuestionnaireLine = ({ id, title, onHandleValue }) => {
+const QuestionnaireLine = ({ id, data, onDisable, onHandleValue }) => {
   const [value, setValue] = useState();
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const QuestionnaireLine = ({ id, title, onHandleValue }) => {
         id !== 4 ? "py-6 border-b-2 border-gray-300 border-dotted" : "pt-6 pb-2"
       }`}
     >
-      <p className="basis-1/2">{title}</p>
+      <p className="basis-1/2">{data.title}</p>
       <div className="basis-1/2 flex flex-row items-center">
         <div className="basis-1/6 text-center pl-4 flex flex-col items-center">
           <label className="inline-flex items-center">
@@ -23,6 +23,8 @@ const QuestionnaireLine = ({ id, title, onHandleValue }) => {
               value="0"
               className="form-radio h-5 w-5 text-gray-600 cursor-pointer"
               onChange={(e) => setValue(e.target.value)}
+              disabled={onDisable}
+              checked={data.value === 0}
             />
           </label>
         </div>
@@ -34,6 +36,8 @@ const QuestionnaireLine = ({ id, title, onHandleValue }) => {
               value="1"
               className="form-radio h-5 w-5 text-gray-600 cursor-pointer"
               onChange={(e) => setValue(e.target.value)}
+              disabled={onDisable}
+              checked={data.value === 1}
             />
           </label>
         </div>
@@ -45,6 +49,8 @@ const QuestionnaireLine = ({ id, title, onHandleValue }) => {
               value="2"
               className="form-radio h-5 w-5 text-gray-600 cursor-pointer"
               onChange={(e) => setValue(e.target.value)}
+              disabled={onDisable}
+              checked={data.value === 2}
             />
           </label>
         </div>
@@ -56,6 +62,8 @@ const QuestionnaireLine = ({ id, title, onHandleValue }) => {
               value="3"
               className="form-radio h-5 w-5 text-gray-600 cursor-pointer"
               onChange={(e) => setValue(e.target.value)}
+              disabled={onDisable}
+              checked={data.value === 3}
             />
           </label>
         </div>
@@ -67,6 +75,8 @@ const QuestionnaireLine = ({ id, title, onHandleValue }) => {
               value="4"
               className="form-radio h-5 w-5 text-gray-600 cursor-pointer"
               onChange={(e) => setValue(e.target.value)}
+              disabled={onDisable}
+              checked={data.value === 4}
             />
           </label>
         </div>
@@ -78,6 +88,8 @@ const QuestionnaireLine = ({ id, title, onHandleValue }) => {
               value="5"
               className="form-radio h-5 w-5 text-gray-600 cursor-pointer"
               onChange={(e) => setValue(e.target.value)}
+              disabled={onDisable}
+              checked={data.value === 5}
             />
           </label>
         </div>

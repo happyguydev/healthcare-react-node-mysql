@@ -1,5 +1,5 @@
 const db = require("../models");
-const { UserRole, Users, HistoryLog } = db.models;
+const { UserRole, Users } = db.models;
 const Op = db.Sequelize.Op;
 
 exports.findRole = (req, res) => {
@@ -14,13 +14,7 @@ exports.findRole = (req, res) => {
 
 exports.submit = (req, res) => {
   // Validate request
-  if (
-    !req.body.first ||
-    !req.body.second ||
-    !req.body.third ||
-    !req.body.fourth ||
-    !req.body.fifth
-  ) {
+  if (!req.body.status) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
@@ -29,21 +23,43 @@ exports.submit = (req, res) => {
 
   // Create a History
   const answer = {
-    first: req.body.first,
-    second: req.body.second,
-    third: req.body.third,
-    fourth: req.body.fourth,
-    fifth: req.body.fifth,
+    name: req.body.name,
+    email: req.body.email,
+    status: req.body.status,
+    role_id: req.body.role === "admin" ? 1 : 2,
   };
 
   // Save History in the database
-  HistoryLog.create(answer)
+  Users.create(answer)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
         message: err.message || "Some error occurred while saving the answer.",
+      });
+    });
+};
+
+exports.saveUser = (res, req) => {
+  if (!req.body.username || !req.body.email) {
+    res.status(400).send({
+      message: "Content can not be empty!",
+    });
+    return;
+  }
+
+  const email = req.query.email;
+
+  Users.findAll({ where: { email: email } })
+    .then((data) => {
+      console.log(data.length);
+      // res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials.",
       });
     });
 };
